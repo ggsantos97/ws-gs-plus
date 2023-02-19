@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: senha123
+      MYSQL_DATABASE: GSPLUS
+      MYSQL_USER: gsplus
+      MYSQL_PASSWORD: senha123
+    volumes:
+      - mysql_data_container:/data/db
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: gsplus
+      MONGO_INITDB_ROOT_PASSWORD: senha123
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data_container:/data/db
+
+  redis:
+    image: redis:4
+    container_name: redis-gsplus
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data_container:/data/redis
+volumes:
+  mysql_data_container:
+  mongo_data_container:
+  redis_data_container:
+
