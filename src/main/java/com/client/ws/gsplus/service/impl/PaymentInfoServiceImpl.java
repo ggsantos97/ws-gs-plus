@@ -42,7 +42,7 @@ public class PaymentInfoServiceImpl implements PaymentInfoService {
 
     @Override
     public Boolean process(PaymentProcessDto dto) {
-        final var user = userRepository.findById(dto.getUserPaymentInfoDto().getId())
+        final var user = userRepository.findById(dto.getUserPaymentInfoDto().getUserId())
                 .orElseThrow(()-> new NotFoundException("Usuário não encontrado"));
         if (Objects.nonNull(user.getSubscriptionType())) {
             //todo exception de negocio

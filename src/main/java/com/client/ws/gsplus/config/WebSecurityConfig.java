@@ -22,9 +22,10 @@ public class WebSecurityConfig {
     private final UserDetailsRepository userDetailsRepository;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeRequests().antMatchers(HttpMethod.GET, "/subscription-type").permitAll()
-                .antMatchers("/subscription-type/*").permitAll()
-                .antMatchers(HttpMethod.POST, "/user").permitAll()
+        return http.authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/subscriptions-type").permitAll()
+                .antMatchers("/subscriptions-type/*").permitAll()
+                .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.POST, "/payment/process").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .anyRequest().authenticated()

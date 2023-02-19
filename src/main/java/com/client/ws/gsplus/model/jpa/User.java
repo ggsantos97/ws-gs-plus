@@ -1,5 +1,6 @@
 package com.client.ws.gsplus.model.jpa;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,9 +27,11 @@ public class User implements Serializable {
 
     @Builder.Default
     @Column(name = "dt_subscription")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "Brazil/East")
     private LocalDate dtSubscription = LocalDate.now();
     
     @Column(name = "dt_expiration")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "Brazil/East")
     private LocalDate dtExpiration;
 
     @ManyToOne(fetch = FetchType.LAZY)

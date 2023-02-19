@@ -19,7 +19,7 @@ public class SubscriptionTypeServiceImpl implements SubscriptionTypeService {
     private final SubscriptionTypeRepository subscriptionTypeRepository;
 
     @Override
-    @Cacheable(value = "subscriptionType")
+    //@Cacheable(value = "subscriptionType")
     public List<SubscriptionType> findAll() {
         return subscriptionTypeRepository.findAll();
     }
