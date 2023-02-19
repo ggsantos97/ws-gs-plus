@@ -5,4 +5,5 @@ import com.client.ws.gsplus.model.jpa.User;
 
 public interface UserService {
     User create(UserDto dto);
+    User findByIdOrElseThrow(Long id);
 }

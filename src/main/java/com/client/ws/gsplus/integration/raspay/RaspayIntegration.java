@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 @AllArgsConstructor
-public class RasPayIntegration {
+public class RaspayIntegration {
 
 
     private  RestTemplate restTemplateGetwayService;

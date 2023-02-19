@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
         User user = UserMapper.mapFrom(dto, userType, null);
         return userRepository.save(user);
     }
+
+    @Override
+    public User findByIdOrElseThrow(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuário não encontrado "));
+    }
 }

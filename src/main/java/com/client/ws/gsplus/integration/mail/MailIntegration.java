@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class MailIntegrationComponent {
+public class MailIntegration {
     private final JavaMailSender javaMailSender;
 
     public void send(String mailTo, String message, String subject) {
